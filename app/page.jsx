@@ -63,7 +63,7 @@ export default function HomePage() {
             <div className="text-4xl mb-4">📅</div>
             <h3 className="text-xl font-bold text-white mb-2">Free Consultation</h3>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Book a free 30-minute appointment and get a personalized plan.
+              Book a free 15-minute appointment and get a personalized plan.
             </p>
           </div>
 
