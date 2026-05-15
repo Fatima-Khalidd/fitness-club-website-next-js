@@ -3,7 +3,8 @@ import Link from 'next/link'
 export default function Footer() {
   return (
     <footer className="bg-neutral-950 border-t border-white/10 text-gray-300">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-14 grid gap-10 md:grid-cols-12">
+      {/* Increased from py-14 to py-20 for more top/bottom spacing */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20 grid gap-12 md:grid-cols-12">
         
         {/* Brand */}
         <div className="md:col-span-5">
@@ -16,6 +17,10 @@ export default function Footer() {
           <p className="text-gray-400 leading-relaxed">
             Your destination for strength, dedication, and transformation.
           </p>
+          {/* Added button for better spacing */}
+          <button className="mt-6 bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-md transition">
+            BOOK FREE APPOINTMENT
+          </button>
         </div>
 
         {/* Links */}
@@ -23,7 +28,7 @@ export default function Footer() {
           <h3 className="text-white font-semibold uppercase text-sm mb-3 border-b-2 border-red-600 inline-block pb-1">
             Our Studio
           </h3>
-          <ul className="space-y-2 text-sm">
+          <ul className="space-y-3 text-sm"> {/* Increased space-y-2 to space-y-3 */}
             <li><Link href="/aboutus" className="hover:text-red-500 transition">About Us</Link></li>
             <li><Link href="/trainers" className="hover:text-red-500 transition">Trainers</Link></li>
             <li><Link href="/classes" className="hover:text-red-500 transition">Classes</Link></li>
@@ -36,7 +41,7 @@ export default function Footer() {
           <h3 className="text-white font-semibold uppercase text-sm mb-3 border-b-2 border-red-600 inline-block pb-1">
             Get in Touch
           </h3>
-          <div className="space-y-2 text-sm">
+          <div className="space-y-3 text-sm"> {/* Increased space-y-2 to space-y-3 */}
             <p className="text-gray-400">+92 305 7050399</p>
             <p className="text-gray-400">support@hamzafitnessclub.com</p>
             <p className="text-gray-400">Green Town, Faisalabad, Pakistan</p>
@@ -44,7 +49,8 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/10 text-center text-sm text-gray-400 py-6">
+      {/* Increased bottom padding from py-6 to py-8 */}
+      <div className="border-t border-white/10 text-center text-sm text-gray-400 py-8">
         © 2025 <span className="text-white font-semibold">Hamza Fitness Club</span>. 
         All rights reserved.
       </div>
