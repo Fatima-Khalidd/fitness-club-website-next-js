@@ -1,158 +1,159 @@
+'use client'
+
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 
-const trainers = [
+// Fallback hardcoded trainers shown while DB is empty
+// Replace these with real entries via POST /api/trainers
+const FALLBACK_TRAINERS = [
   {
-    name: 'Alexander Thornton',
-    role: 'Founder',
-    specialties: ['Strength & Conditioning', 'Program Design', 'Athlete Development'],
-    bio: 'With over 12 years in elite fitness coaching, Alexander built Hamza Fitness Club from the ground up with a mission to transform lives through science-backed training.',
-    img: '/images/male user.jpg',
-    gender: 'male',
+    _id: '1',
+    name: 'Coach Hamza',
+    specialization: ['Weight Training', 'Strength & Conditioning'],
+    bio: '10+ years of experience helping clients achieve their fitness goals through personalized training programs.',
+    isActive: true,
   },
   {
-    name: 'Nathaniel Brooks',
-    role: 'Co-Founder',
-    specialties: ['Nutrition Coaching', 'Fat Loss', 'Mobility'],
-    bio: 'Nathaniel combines expertise in sports nutrition and movement science to design programs that get sustainable, long-term results for every member.',
-    img: '/images/female user.jpg',
-    gender: 'female',
+    _id: '2',
+    name: 'Coach Ali',
+    specialization: ['Cardio', 'Sports Performance'],
+    bio: 'Certified personal trainer specializing in cardiovascular fitness and athletic performance.',
+    isActive: true,
   },
   {
-    name: 'Carolina Roberts',
-    role: 'Boxing & Conditioning Trainer',
-    specialties: ['Boxing', 'HIIT', 'Explosive Power'],
-    bio: 'Carolina brings high energy and technical precision to every session. Her boxing-inspired conditioning classes are the most popular in the club.',
-    img: '/images/boxing.jpg',
-    gender: 'female',
+    _id: '3',
+    name: 'Coach Sara',
+    specialization: ['Yoga', 'Mobility & Pain Relief'],
+    bio: 'Expert in mobility training and rehabilitation, helping clients move better and live pain-free.',
+    isActive: true,
   },
-  {
-    name: 'Isabella Hartman',
-    role: 'Yoga & Wellness Trainer',
-    specialties: ['Yoga', 'Mindfulness', 'Recovery'],
-    bio: 'Isabella creates a calm, focused environment for members looking to improve flexibility, reduce stress, and build a strong mind-body connection.',
-    img: '/images/Yoga.jpg',
-    gender: 'female',
-  },
-]
-
-const stats = [
-  { value: '91K+', label: 'Sessions Coached' },
-  { value: '84K+', label: 'Happy Members' },
-  { value: '42+', label: 'Company Support' },
-  { value: '4.7+', label: 'Avg Rating' },
 ]
 
 export default function TrainersPage() {
+  const [trainers, setTrainers] = useState([])
+  const [loading, setLoading]   = useState(true)
+  const [error, setError]       = useState('')
+
+  useEffect(() => {
+    // This runs when the page loads
+    // It fetches real trainers from your MongoDB via /api/trainers
+    async function fetchTrainers() {
+      try {
+        const res  = await fetch('/api/trainers')
+        const data = await res.json()
+
+        if (data.success && data.data.length > 0) {
+          // Real data from MongoDB — use it
+          setTrainers(data.data)
+        } else {
+          // DB is empty — show fallback trainers
+          setTrainers(FALLBACK_TRAINERS)
+        }
+      } catch (err) {
+        // API call failed — show fallback
+        setTrainers(FALLBACK_TRAINERS)
+        setError('Could not load live data. Showing default trainers.')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchTrainers()
+  }, []) // [] means run once on page load
+
   return (
-    <main className="bg-neutral-950 text-gray-300 min-h-screen">
+    <div className="min-h-screen py-16 px-4">
 
       {/* Hero */}
-      <section className="relative h-[55vh] min-h-[400px] flex items-center justify-center overflow-hidden">
-        <Image
-          src="/images/gym-floor.jpg"
-          alt="Hamza Fitness Club Trainers"
-          fill
-          className="object-cover brightness-[0.25]"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-neutral-950" />
-        <div className="relative z-10 text-center px-6 max-w-3xl">
-          <span className="text-red-500 uppercase tracking-[0.3em] text-sm font-semibold mb-4 block">Our Team</span>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white leading-tight uppercase tracking-wide mb-5">
-            Meet the Professionals<br />
-            <span className="text-red-500">Behind Every Transformation</span>
-          </h1>
-          <p className="text-gray-400 text-base md:text-lg mb-8 max-w-xl mx-auto">
-            Our certified trainers bring unmatched expertise, energy, and focus to every session.
-            They coach, motivate, and personalize your fitness journey.
+      <div className="relative py-20 px-4 text-center mb-12 overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/images/training.jpg"
+            alt="Trainers"
+            className="w-full h-full object-cover opacity-30"
+          />
+          <div className="absolute inset-0 bg-black/70" />
+        </div>
+        <div className="relative">
+          <p className="text-red-500 uppercase tracking-widest font-bold mb-2 text-sm">
+            Meet The Team
           </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <a href="#team" className="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-3 rounded-full transition-colors">
-              Explore Our Team
-            </a>
-            <Link href="/booking" className="border border-white/30 hover:border-white text-white font-semibold px-8 py-3 rounded-full transition-colors">
-              Book a Free Session
-            </Link>
-          </div>
+          <h1 className="text-4xl md:text-5xl font-black text-white uppercase mb-4">
+            Our Trainers
+          </h1>
+          <p className="text-gray-300 max-w-xl mx-auto">
+            Expert coaches dedicated to helping you reach your fitness goals.
+          </p>
         </div>
-      </section>
+      </div>
 
-      {/* Stats */}
-      <section className="py-12 border-b border-white/5">
-        <div className="max-w-4xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6">
-          {stats.map((s) => (
-            <div key={s.label} className="text-center">
-              <div className="text-3xl font-extrabold text-red-500 mb-1">{s.value}</div>
-              <div className="text-gray-500 text-xs uppercase tracking-wider">{s.label}</div>
-            </div>
-          ))}
+      {/* Error notice */}
+      {error && (
+        <p className="text-center text-yellow-400 text-sm mb-6">{error}</p>
+      )}
+
+      {/* Loading state */}
+      {loading ? (
+        <div className="text-center text-gray-400 py-20">
+          <div className="text-4xl mb-4">⏳</div>
+          <p>Loading trainers...</p>
         </div>
-      </section>
-
-      {/* Trainers Grid */}
-      <section id="team" className="py-20 px-6 max-w-6xl mx-auto">
-        <div className="text-center mb-14">
-          <span className="text-red-500 uppercase tracking-widest text-sm font-semibold">Expert Trainers</span>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-white mt-3">
-            Dedicated to Your Success
-          </h2>
-        </div>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {trainers.map((trainer, i) => (
+      ) : (
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {trainers.map(trainer => (
             <div
-              key={i}
-              className="group bg-neutral-900 border border-white/10 rounded-2xl overflow-hidden hover:border-red-600/50 transition-all duration-300 hover:-translate-y-1"
+              key={trainer._id}
+              className="bg-neutral-900 border border-white/10 rounded-xl overflow-hidden hover:border-red-500/40 transition"
             >
-              {/* Photo */}
-              <div className="relative h-56 overflow-hidden">
-                <Image
-                  src={trainer.img}
-                  alt={trainer.name}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-transparent to-transparent" />
-                <div className="absolute bottom-3 left-4">
-                  <span className="bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full">
-                    {trainer.role}
-                  </span>
-                </div>
+              {/* Trainer image placeholder */}
+              <div className="h-48 bg-neutral-800 flex items-center justify-center">
+                <div className="text-6xl">👤</div>
               </div>
 
-              {/* Info */}
-              <div className="p-5">
-                <h3 className="text-white font-bold text-lg mb-2">{trainer.name}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed mb-4">{trainer.bio}</p>
-                <div className="flex flex-wrap gap-2">
-                  {trainer.specialties.map((s) => (
-                    <span key={s} className="bg-white/5 border border-white/10 text-gray-400 text-xs px-2 py-1 rounded-full">
-                      {s}
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-white mb-1">
+                  {trainer.name}
+                </h3>
+
+                {/* Specializations as badges */}
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {trainer.specialization.map((spec, i) => (
+                    <span
+                      key={i}
+                      className="text-xs bg-red-600/20 text-red-400 border border-red-500/30 px-2 py-1 rounded"
+                    >
+                      {spec}
                     </span>
                   ))}
                 </div>
+
+                <p className="text-gray-400 text-sm leading-relaxed mb-4">
+                  {trainer.bio}
+                </p>
+
+                <Link
+                  href="/booking"
+                  className="block text-center bg-red-600 hover:bg-red-700 text-white py-2 rounded text-sm font-bold uppercase transition"
+                >
+                  Book Session
+                </Link>
               </div>
             </div>
           ))}
         </div>
-      </section>
+      )}
 
-      {/* CTA Banner */}
-      <section className="py-20 px-6 bg-neutral-900/60 border-y border-white/5">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
-            Join Our Fitness Community
-          </h2>
-          <p className="text-gray-400 mb-8 text-lg">
-            Train with expert coaches committed to your transformation.
-          </p>
-          <Link href="/booking" className="bg-red-600 hover:bg-red-700 text-white font-bold px-10 py-4 rounded-full text-lg transition-colors inline-block">
-            Join Now — Free Session
-          </Link>
-        </div>
-      </section>
+      {/* CTA */}
+      <div className="text-center mt-16">
+        <p className="text-gray-400 mb-4">Want to train with our experts?</p>
+        <Link
+          href="/booking"
+          className="inline-block bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded font-bold uppercase transition"
+        >
+          Book Free Appointment
+        </Link>
+      </div>
 
-    </main>
+    </div>
   )
 }
