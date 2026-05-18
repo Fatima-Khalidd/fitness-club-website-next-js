@@ -1,260 +1,158 @@
+'use client'
+
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 
-const classes = [
+const FALLBACK_CLASSES = [
   {
-    id: 1,
-    name: 'Personal Training',
-    tag: 'Strength',
-    description: 'Build muscle, improve endurance, and enhance overall strength with 1-on-1 expert guidance.',
-    duration: '60 min',
-    level: 'All Levels',
-    icon: '🏋️',
-    color: 'from-red-900/60 to-red-950/80',
-    border: 'border-red-700/40',
+    _id: '1',
+    name: 'Morning Cardio Blast',
+    description: 'High-intensity cardio to kickstart your day and burn maximum calories.',
+    schedule: 'Mon / Wed / Fri — 6:00 AM',
+    capacity: 20,
   },
   {
-    id: 2,
-    name: 'HIIT & Cardio',
-    tag: 'Cardio',
-    description: 'High-intensity interval training for maximum fat loss, endurance, and calorie burn.',
-    duration: '45 min',
-    level: 'Intermediate',
-    icon: '⚡',
-    color: 'from-orange-900/60 to-orange-950/80',
-    border: 'border-orange-700/40',
+    _id: '2',
+    name: 'Strength & Conditioning',
+    description: 'Build functional strength with compound movements and progressive overload.',
+    schedule: 'Tue / Thu / Sat — 7:00 AM',
+    capacity: 15,
   },
   {
-    id: 3,
-    name: 'Yoga & Mindfulness',
-    tag: 'Wellness',
-    description: 'Improve balance, flexibility, and mental relaxation through guided yoga sessions.',
-    duration: '60 min',
-    level: 'Beginner',
-    icon: '🧘',
-    color: 'from-emerald-900/60 to-emerald-950/80',
-    border: 'border-emerald-700/40',
+    _id: '3',
+    name: 'Yoga & Flexibility',
+    description: 'Improve mobility, reduce stress, and enhance body awareness.',
+    schedule: 'Mon / Wed / Fri — 5:00 PM',
+    capacity: 12,
   },
   {
-    id: 4,
-    name: 'Boxing & Conditioning',
-    tag: 'Performance',
-    description: 'Enhance speed, agility, and explosive power with boxing drills and conditioning work.',
-    duration: '60 min',
-    level: 'Advanced',
-    icon: '🥊',
-    color: 'from-blue-900/60 to-blue-950/80',
-    border: 'border-blue-700/40',
+    _id: '4',
+    name: 'HIIT Training',
+    description: 'Short bursts of intense exercise alternated with recovery periods.',
+    schedule: 'Tue / Thu — 6:00 PM',
+    capacity: 18,
   },
   {
-    id: 5,
-    name: 'Group Fitness',
-    tag: 'Community',
-    description: 'Fun, high-energy workouts with community motivation — never train alone again.',
-    duration: '50 min',
-    level: 'All Levels',
-    icon: '🔥',
-    color: 'from-purple-900/60 to-purple-950/80',
-    border: 'border-purple-700/40',
+    _id: '5',
+    name: 'Boxing Fitness',
+    description: 'Learn boxing techniques while getting an incredible full-body workout.',
+    schedule: 'Sat / Sun — 8:00 AM',
+    capacity: 10,
+  },
+  {
+    _id: '6',
+    name: 'Nutrition Workshop',
+    description: 'Learn how to fuel your body for maximum performance and recovery.',
+    schedule: 'Every Sunday — 10:00 AM',
+    capacity: 25,
   },
 ]
 
-const benefits = [
-  { title: '60-Min In-Person Session', desc: 'Personalized coaching to strengthen your technique and reach your goals faster.' },
-  { title: 'Virtual Training Session', desc: 'Join live or on-demand workouts from anywhere with real-time trainer feedback.' },
-  { title: 'Flexible Scheduling', desc: 'Choose morning, midday, or evening sessions that fit your daily routine.' },
-]
-
-const stats = [
-  { value: '91K+', label: 'Sessions Done' },
-  { value: '84K+', label: 'Happy Members' },
-  { value: '42+', label: 'Expert Trainers' },
-  { value: '4.7+', label: 'Avg Rating' },
-]
-
-const reviews = [
-  { name: 'Pakeeza Hassan', city: 'Faisalabad', gender: 'female', text: 'In 8 weeks I dropped 6kg and hit my first unassisted pull-up. Coaches actually track my progress weekly — feels like a team behind me!' },
-  { name: 'Ahmed Raza', city: 'Faisalabad', gender: 'male', text: 'Variety is insane — HIIT, strength, boxing. I never get bored and my stamina\'s never been better.' },
-  { name: 'Ali', city: 'Faisalabad', gender: 'male', text: '24/7 access, spotless equipment, and trainers who actually check my form. Couldn\'t ask for more.' },
-  { name: 'Sara Khan', city: 'Lahore', gender: 'female', text: 'The programming keeps me consistent. I\'ve never felt stronger.' },
-]
+const CLASS_ICONS = ['🏃', '🏋️', '🧘', '⚡', '🥊', '🥗']
 
 export default function ClassesPage() {
+  const [classes, setClasses] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError]     = useState('')
+
+  useEffect(() => {
+    async function fetchClasses() {
+      try {
+        const res  = await fetch('/api/classes')
+        const data = await res.json()
+
+        if (data.success && data.data.length > 0) {
+          setClasses(data.data)
+        } else {
+          setClasses(FALLBACK_CLASSES)
+        }
+      } catch (err) {
+        setClasses(FALLBACK_CLASSES)
+        setError('Could not load live data. Showing default classes.')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchClasses()
+  }, [])
+
   return (
-    <main className="bg-neutral-950 text-gray-300 min-h-screen">
+    <div className="min-h-screen py-16 px-4">
 
       {/* Hero */}
-      <section className="relative h-[60vh] min-h-[420px] flex items-center justify-center overflow-hidden">
-        <Image
-          src="/images/gym-floor.jpg"
-          alt="Hamza Fitness Club classes"
-          fill
-          className="object-cover brightness-[0.3]"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-neutral-950" />
-        <div className="relative z-10 text-center px-6 max-w-3xl">
-          <span className="text-red-500 uppercase tracking-[0.3em] text-sm font-semibold mb-4 block">Our Classes</span>
-          <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight uppercase tracking-wide mb-6">
-            Build Strength.<br /> Boost Endurance.<br />
-            <span className="text-red-500">Feel Amazing.</span>
+      <div className="relative py-20 px-4 text-center mb-12 overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/images/boxing.jpg"
+            alt="Classes"
+            className="w-full h-full object-cover opacity-30"
+          />
+          <div className="absolute inset-0 bg-black/70" />
+        </div>
+        <div className="relative">
+          <p className="text-red-500 uppercase tracking-widest font-bold mb-2 text-sm">
+            What We Offer
+          </p>
+          <h1 className="text-4xl md:text-5xl font-black text-white uppercase mb-4">
+            Our Classes
           </h1>
-          <p className="text-gray-400 text-lg mb-8 max-w-xl mx-auto">
-            Every class is led by certified coaches who care about your technique and results.
+          <p className="text-gray-300 max-w-xl mx-auto">
+            From high-intensity cardio to relaxing yoga — we have something for every fitness level.
           </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link href="/pricing" className="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-3 rounded-full transition-colors">
-              View Pricing
-            </Link>
-            <Link href="/booking" className="border border-white/30 hover:border-white text-white font-semibold px-8 py-3 rounded-full transition-colors">
-              Book Free Appointment
-            </Link>
-          </div>
         </div>
-      </section>
+      </div>
 
-      {/* Classes Grid */}
-      <section className="py-20 px-6 max-w-7xl mx-auto">
-        <div className="text-center mb-14">
-          <span className="text-red-500 uppercase tracking-widest text-sm font-semibold">What We Offer</span>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-white mt-3">
-            Fitness Classes for Every Skill Level
-          </h2>
+      {error && (
+        <p className="text-center text-yellow-400 text-sm mb-6">{error}</p>
+      )}
+
+      {loading ? (
+        <div className="text-center text-gray-400 py-20">
+          <div className="text-4xl mb-4">⏳</div>
+          <p>Loading classes...</p>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {classes.map((cls) => (
+      ) : (
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {classes.map((cls, index) => (
             <div
-              key={cls.id}
-              className={`bg-gradient-to-br ${cls.color} border ${cls.border} rounded-2xl p-7 hover:scale-[1.02] transition-transform duration-300`}
+              key={cls._id}
+              className="bg-neutral-900 border border-white/10 rounded-xl p-6 hover:border-red-500/40 transition"
             >
-              <div className="text-4xl mb-4">{cls.icon}</div>
-              <span className="text-xs font-bold uppercase tracking-widest text-gray-400 bg-white/10 px-3 py-1 rounded-full">
-                {cls.tag}
-              </span>
-              <h3 className="text-xl font-bold text-white mt-4 mb-2">{cls.name}</h3>
-              <p className="text-gray-400 text-sm leading-relaxed mb-5">{cls.description}</p>
-              <div className="flex gap-4 text-xs text-gray-400">
-                <span className="bg-white/10 px-3 py-1 rounded-full">⏱ {cls.duration}</span>
-                <span className="bg-white/10 px-3 py-1 rounded-full">📊 {cls.level}</span>
+              <div className="text-4xl mb-4">
+                {CLASS_ICONS[index % CLASS_ICONS.length]}
               </div>
-            </div>
-          ))}
-          {/* CTA card */}
-          <div className="border border-red-600/50 bg-red-600/10 rounded-2xl p-7 flex flex-col items-center justify-center text-center hover:bg-red-600/20 transition-colors">
-            <div className="text-4xl mb-4">🎯</div>
-            <h3 className="text-xl font-bold text-white mb-3">Not Sure Where to Start?</h3>
-            <p className="text-gray-400 text-sm mb-6">Book a free consultation and we'll match you to the perfect class.</p>
-            <Link href="/booking" className="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3 rounded-full transition-colors text-sm">
-              Free Consultation
-            </Link>
-          </div>
-        </div>
-      </section>
 
-      {/* Why Train With Us */}
-      <section className="py-20 bg-neutral-900/60 border-y border-white/5">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-14">
-            <span className="text-red-500 uppercase tracking-widest text-sm font-semibold">Why Train With Us</span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-white mt-3">
-              Experience the Difference
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8 mb-14">
-            {benefits.map((b, i) => (
-              <div key={i} className="bg-neutral-800/50 border border-white/10 rounded-2xl p-7">
-                <div className="w-10 h-10 bg-red-600/20 border border-red-600/40 rounded-full flex items-center justify-center text-red-400 font-bold text-lg mb-5">
-                  {i + 1}
+              <h3 className="text-xl font-bold text-white mb-2">
+                {cls.name}
+              </h3>
+
+              <p className="text-gray-400 text-sm leading-relaxed mb-4">
+                {cls.description}
+              </p>
+
+              <div className="border-t border-white/10 pt-4 space-y-2">
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-500">Schedule</span>
+                  <span className="text-white">{cls.schedule}</span>
                 </div>
-                <h3 className="text-white font-bold text-lg mb-3">{b.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{b.desc}</p>
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-500">Capacity</span>
+                  <span className="text-white">{cls.capacity} people</span>
+                </div>
               </div>
-            ))}
-          </div>
-          {/* Key Benefits */}
-          <div className="bg-neutral-800/40 border border-white/10 rounded-2xl p-8">
-            <h3 className="text-white font-bold text-xl mb-5">Key Benefits</h3>
-            <ul className="grid sm:grid-cols-2 gap-3">
-              {[
-                'Proven results & success stories',
-                'Expert trainers & personalized coaching',
-                'Supportive fitness community',
-                'State-of-the-art facilities',
-                'Flexible membership plans',
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-3 text-gray-300 text-sm">
-                  <span className="text-red-500 font-bold">✓</span> {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
 
-      {/* Stats */}
-      <section className="py-16 px-6">
-        <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
-          {stats.map((s) => (
-            <div key={s.label} className="text-center">
-              <div className="text-3xl font-extrabold text-red-500 mb-1">{s.value}</div>
-              <div className="text-gray-500 text-sm uppercase tracking-wider">{s.label}</div>
+              <Link
+                href="/booking"
+                className="block text-center mt-4 bg-red-600 hover:bg-red-700 text-white py-2 rounded text-sm font-bold uppercase transition"
+              >
+                Book This Class
+              </Link>
             </div>
           ))}
         </div>
-      </section>
+      )}
 
-      {/* Reviews */}
-      <section className="py-20 bg-neutral-900/60 border-y border-white/5 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <span className="text-red-500 uppercase tracking-widest text-sm font-semibold">Member Stories</span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-white mt-3">Real Results from Real Members</h2>
-            <div className="flex items-center justify-center gap-2 mt-4 text-gray-400">
-              <span className="text-yellow-400 text-xl">★★★★★</span>
-              <span className="font-bold text-white">4.9</span>
-              <span>/ Based on 12 reviews</span>
-            </div>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {reviews.map((r, i) => (
-              <div key={i} className="bg-neutral-800/50 border border-white/10 rounded-2xl p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-full bg-neutral-700 overflow-hidden relative flex-shrink-0">
-                    <Image
-                      src={r.gender === 'female' ? '/images/female user.jpg' : '/images/male user.jpg'}
-                      alt={r.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div>
-                    <p className="text-white font-semibold text-sm">{r.name}</p>
-                    <p className="text-gray-500 text-xs">{r.city}</p>
-                  </div>
-                </div>
-                <p className="text-gray-400 text-sm leading-relaxed italic">"{r.text}"</p>
-                <div className="text-yellow-400 text-xs mt-3">★★★★★</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Banner */}
-      <section className="py-20 px-6 text-center">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-5">
-            Ready to Join Hamza Fitness Club?
-          </h2>
-          <p className="text-gray-400 mb-8">
-            Start with a free 30-minute consultation. No pressure, no commitment — just results.
-          </p>
-          <Link href="/booking" className="bg-red-600 hover:bg-red-700 text-white font-bold px-10 py-4 rounded-full text-lg transition-colors inline-block">
-            Book Free Appointment
-          </Link>
-        </div>
-      </section>
-
-    </main>
+    </div>
   )
 }
