@@ -133,7 +133,7 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="flex items-center justify-center bg-neutral-800 rounded-lg min-h-32">
-              
+              <a
                 href="https://maps.google.com/?q=Khatam-e-Nabuwat+Plaza+Millat+Rd+Green+Town+Faisalabad"
                 target="_blank"
                 rel="noopener noreferrer"
