@@ -1,186 +1,161 @@
 import Link from 'next/link'
-import Image from 'next/image'
-
-const highlights = [
-  'Personalized training programs',
-  'Strength & conditioning',
-  'Nutrition guidance',
-  'Flexible class schedules',
-  'Community events',
-  'Progress tracking',
-]
-
-const pillars = [
-  {
-    title: 'Our Vision',
-    icon: '👁',
-    text: 'To inspire healthier lifestyles by building stronger bodies and empowering minds through fitness.',
-  },
-  {
-    title: 'Our Mission',
-    icon: '🎯',
-    text: 'To provide expert training, personalized programs, and a supportive community that helps every member achieve their fitness goals.',
-  },
-  {
-    title: 'Our Motto',
-    icon: '🔥',
-    text: 'Train hard, stay consistent, and become stronger every day — inside and out.',
-  },
-]
-
-const stats = [
-  { value: '91K+', label: 'Projects Done' },
-  { value: '84K+', label: 'Happy Clients' },
-  { value: '42+', label: 'Company Support' },
-  { value: '4.7+', label: 'Client Reviews' },
-]
 
 export default function AboutPage() {
   return (
-    <main className="bg-neutral-950 text-gray-300 min-h-screen">
+    <div className="min-h-screen py-16 px-4">
 
       {/* Hero */}
-      <section className="relative h-[55vh] min-h-[400px] flex items-center justify-center overflow-hidden">
-        <Image
-          src="/images/gym-floor.jpg"
-          alt="Hamza Fitness Club team and facility"
-          fill
-          className="object-cover brightness-[0.25]"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-neutral-950" />
-        <div className="relative z-10 text-center px-6 max-w-3xl">
-          <span className="text-red-500 uppercase tracking-[0.3em] text-sm font-semibold mb-4 block">About Us</span>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white leading-tight uppercase mb-5">
-            Stronger Together at<br />
-            <span className="text-red-500">Hamza Fitness Club</span>
-          </h1>
-          <p className="text-gray-400 text-base md:text-lg mb-8 max-w-xl mx-auto">
-            A community-first gym in Faisalabad focused on smart training, real results, and a supportive culture.
+      <div className="relative py-24 px-4 text-center mb-16 overflow-hidden rounded-xl">
+        <div className="absolute inset-0">
+          <img
+            src="/images/gym-floor.jpg"
+            alt="About Us"
+            className="w-full h-full object-cover opacity-30"
+          />
+          <div className="absolute inset-0 bg-black/70" />
+        </div>
+        <div className="relative">
+          <p className="text-red-500 uppercase tracking-widest font-bold mb-2 text-sm">
+            Our Story
           </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <a href="#our-story" className="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-3 rounded-full transition-colors">
-              Our Story
-            </a>
-            <a href="#team" className="border border-white/30 hover:border-white text-white font-semibold px-8 py-3 rounded-full transition-colors">
-              Meet the Team
-            </a>
-          </div>
+          <h1 className="text-4xl md:text-5xl font-black text-white uppercase mb-4">
+            About Us
+          </h1>
+          <p className="text-gray-300 max-w-2xl mx-auto text-lg">
+            Built on dedication, driven by results.
+          </p>
         </div>
-      </section>
+      </div>
 
-      {/* Who We Are */}
-      <section id="our-story" className="py-20 px-6 max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div className="max-w-4xl mx-auto space-y-16">
+
+        {/* Mission */}
+        <div className="grid md:grid-cols-2 gap-10 items-center">
           <div>
-            <span className="text-red-500 uppercase tracking-widest text-sm font-semibold">Who We Are</span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-white mt-3 mb-6 leading-tight">
-              Your Ultimate Fitness and Wellness Destination.
-            </h2>
-            <p className="text-gray-400 leading-relaxed mb-6">
-              We build stronger bodies and stronger communities. Our expert coaches, supportive culture, and
-              top-tier facilities help beginners and athletes alike reach their full potential.
+            <p className="text-red-500 uppercase tracking-widest font-bold mb-2 text-sm">
+              Who We Are
             </p>
-            <ul className="grid grid-cols-2 gap-3 mb-8">
-              {highlights.map((item) => (
-                <li key={item} className="flex items-center gap-2 text-gray-300 text-sm">
-                  <span className="text-red-500 font-bold">✓</span> {item}
-                </li>
-              ))}
-            </ul>
-            <a
-              href="tel:+923057050399"
-              className="inline-flex items-center gap-3 bg-neutral-800 border border-white/10 hover:border-red-600/50 text-white font-semibold px-6 py-3 rounded-full transition-colors"
-            >
-              <span className="text-red-500">📞</span>
-              Customer Support · +92 305 7050399
-            </a>
+            <h2 className="text-3xl font-black text-white uppercase mb-4">
+              Our Mission
+            </h2>
+            <p className="text-gray-400 leading-relaxed mb-4">
+              Hamza Fitness Club was founded with one goal — to make professional 
+              fitness training accessible to everyone in Faisalabad. We believe 
+              that with the right guidance, every person can transform their body 
+              and life.
+            </p>
+            <p className="text-gray-400 leading-relaxed">
+              We provide personalized training, nutrition coaching, and a supportive 
+              community that keeps you motivated every step of the way.
+            </p>
           </div>
-          <div className="relative h-80 md:h-96 rounded-2xl overflow-hidden">
-            <Image
-              src="/images/man who we are.svg"
-              alt="Athlete"
-              fill
-              className="object-contain"
-            />
+          <div className="bg-neutral-900 border border-white/10 rounded-xl p-8 text-center">
+            <div className="text-6xl mb-4">🏋️</div>
+            <p className="text-gray-400 text-sm italic">
+              "Your only competition is who you were yesterday."
+            </p>
           </div>
         </div>
-      </section>
 
-      {/* Stats */}
-      <section className="py-12 border-y border-white/5">
-        <div className="max-w-4xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6">
-          {stats.map((s) => (
-            <div key={s.label} className="text-center">
-              <div className="text-3xl font-extrabold text-red-500 mb-1">{s.value}</div>
-              <div className="text-gray-500 text-xs uppercase tracking-wider">{s.label}</div>
+        {/* Stats */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {[
+            { number: '500+', label: 'Members' },
+            { number: '10+', label: 'Expert Trainers' },
+            { number: '15+', label: 'Classes Offered' },
+            { number: '5★', label: 'Rating' },
+          ].map(stat => (
+            <div
+              key={stat.label}
+              className="bg-neutral-900 border border-white/10 rounded-xl p-6 text-center"
+            >
+              <div className="text-3xl font-black text-red-500 mb-1">
+                {stat.number}
+              </div>
+              <div className="text-gray-400 text-sm uppercase tracking-wide">
+                {stat.label}
+              </div>
             </div>
           ))}
         </div>
-      </section>
 
-      {/* Vision / Mission / Motto */}
-      <section className="py-20 px-6 bg-neutral-900/50 border-b border-white/5">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <span className="text-red-500 uppercase tracking-widest text-sm font-semibold">Professional Fitness</span>
-            <h2 className="text-3xl font-extrabold text-white mt-3">What Drives Us</h2>
-          </div>
+        {/* Values */}
+        <div>
+          <h2 className="text-3xl font-black text-white uppercase mb-8 text-center">
+            Our Values
+          </h2>
           <div className="grid md:grid-cols-3 gap-6">
-            {pillars.map((p, i) => (
+            {[
+              { icon: '💪', title: 'Dedication', desc: 'We push you to your limits while ensuring safe, progressive training.' },
+              { icon: '🤝', title: 'Community', desc: 'A supportive environment where everyone motivates each other.' },
+              { icon: '📈', title: 'Results', desc: 'Every program is designed with measurable outcomes in mind.' },
+            ].map(value => (
               <div
-                key={i}
-                className="bg-neutral-900 border border-white/10 rounded-2xl p-8 hover:border-red-600/40 transition-colors"
+                key={value.title}
+                className="bg-neutral-900 border border-white/10 rounded-xl p-6"
               >
-                <div className="text-4xl mb-5">{p.icon}</div>
-                <h3 className="text-white font-extrabold text-xl mb-4">{p.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{p.text}</p>
+                <div className="text-4xl mb-3">{value.icon}</div>
+                <h3 className="text-lg font-bold text-white mb-2">{value.title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">{value.desc}</p>
               </div>
             ))}
           </div>
         </div>
-      </section>
 
-      {/* Location / Address Section */}
-      <section className="py-20 px-6">
-        <div className="max-w-4xl mx-auto bg-neutral-900 border border-white/10 rounded-2xl p-10 flex flex-col md:flex-row gap-8 items-center">
-          <div className="flex-1">
-            <span className="text-red-500 uppercase tracking-widest text-sm font-semibold">Find Us</span>
-            <h2 className="text-2xl font-extrabold text-white mt-3 mb-4">Visit Hamza Fitness Club</h2>
-            <p className="text-gray-400 mb-2">📍 Chowk, Khatam-e-Nabuwat Plaza, Millat Rd, Green Town, Faisalabad, 38000, Pakistan</p>
-            <p className="text-gray-400 mb-2">📧 support@hamzafitnessclub.com</p>
-            <p className="text-gray-400 mb-6">📞 +92 305 7050399</p>
-            <div className="text-sm text-gray-500 space-y-1 mb-6">
-              <p>Mon – Sat: 6:15–9:15 am | 4:15–10:45 pm</p>
-              <p>Sunday: 6:15–9:15 am | 4:15–10:45 pm</p>
-              <p className="text-red-400">Friday: Closed</p>
+        {/* Location */}
+        <div className="bg-neutral-900 border border-white/10 rounded-xl p-8">
+          <h2 className="text-2xl font-black text-white uppercase mb-6">
+            Find Us
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="space-y-4 text-sm">
+              <div>
+                <span className="text-gray-500 uppercase text-xs tracking-wide">Address</span>
+                <p className="text-white mt-1">
+                  Chowk, Khatam-e-Nabuwat Plaza, Millat Rd,<br />
+                  Green Town, Faisalabad, 38000, Pakistan
+                </p>
+              </div>
+              <div>
+                <span className="text-gray-500 uppercase text-xs tracking-wide">Phone</span>
+                <p className="text-white mt-1">+92 305 7050399</p>
+              </div>
+              <div>
+                <span className="text-gray-500 uppercase text-xs tracking-wide">Email</span>
+                <p className="text-white mt-1">support@hamzafitnessclub.com</p>
+              </div>
+              <div>
+                <span className="text-gray-500 uppercase text-xs tracking-wide">Hours</span>
+                <p className="text-white mt-1">
+                  Mon–Thu, Sat–Sun: 6:15–9:15 AM &amp; 4:15–10:45 PM<br />
+                  Friday: Closed
+                </p>
+              </div>
             </div>
-            <Link
-              href="https://maps.app.goo.gl/d7fBBXknUK5wKgsG7"
-              target="_blank"
-              className="inline-block bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3 rounded-full transition-colors text-sm"
-            >
-              Open in Maps
-            </Link>
-          </div>
-          <div className="flex-1 flex flex-col items-center justify-center text-center">
-            <div className="text-6xl mb-4">🏋️</div>
-            <p className="text-gray-400 text-sm max-w-xs">
-              Come experience Faisalabad's most community-focused fitness club. Walk-ins welcome during open hours.
-            </p>
+            <div className="flex items-center justify-center bg-neutral-800 rounded-lg min-h-32">
+              
+                href="https://maps.google.com/?q=Khatam-e-Nabuwat+Plaza+Millat+Rd+Green+Town+Faisalabad"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-red-500 hover:text-red-400 text-sm font-bold uppercase"
+              >
+                📍 Open in Google Maps →
+              </a>
+            </div>
           </div>
         </div>
-      </section>
 
-      {/* CTA */}
-      <section className="py-16 px-6 text-center bg-neutral-900/60 border-t border-white/5">
-        <h2 className="text-3xl font-extrabold text-white mb-4">Ready to Begin Your Journey?</h2>
-        <p className="text-gray-400 mb-8">Book a free consultation and start training with the best in Faisalabad.</p>
-        <Link href="/booking" className="bg-red-600 hover:bg-red-700 text-white font-bold px-10 py-4 rounded-full text-lg transition-colors inline-block">
-          Book Free Appointment
-        </Link>
-      </section>
+        {/* CTA */}
+        <div className="text-center">
+          <Link
+            href="/booking"
+            className="inline-block bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded font-black uppercase text-lg transition"
+          >
+            Start Your Journey Today
+          </Link>
+        </div>
 
-    </main>
+      </div>
+    </div>
   )
 }
