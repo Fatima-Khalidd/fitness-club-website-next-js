@@ -23,10 +23,10 @@ export default function ContactPage() {
 
       {/* Hero */}
       <div className="text-center mb-16">
-        <p className="text-red-500 uppercase tracking-widest font-bold mb-2 text-sm">
+        <p className="text-red-500 uppercase tracking-widest font-medium mb-2 text-sm">
           Get In Touch
         </p>
-        <h1 className="text-4xl md:text-5xl font-black text-white uppercase mb-4">
+        <h1 className="text-4xl md:text-5xl font-normal text-white mb-4 tracking-tight">
           Contact Us
         </h1>
         <p className="text-gray-400 max-w-xl mx-auto">
@@ -38,7 +38,7 @@ export default function ContactPage() {
 
         {/* Contact Info */}
         <div className="space-y-6">
-          <h2 className="text-2xl font-bold text-white">Our Info</h2>
+          <h2 className="text-2xl font-normal text-white tracking-tight">Our Info</h2>
 
           {[
             { icon: '📍', label: 'Address', value: 'Chowk, Khatam-e-Nabuwat Plaza, Millat Rd, Green Town, Faisalabad' },
@@ -81,7 +81,7 @@ export default function ContactPage() {
             </div>
           ) : (
             <>
-              <h2 className="text-xl font-bold text-white mb-6">Send a Message</h2>
+              <h2 className="text-xl font-normal mb-4 tracking-tight">Send a Message</h2>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label className="block text-xs text-gray-400 uppercase mb-1">

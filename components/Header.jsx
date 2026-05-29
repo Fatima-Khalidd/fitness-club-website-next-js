@@ -24,7 +24,7 @@ export default function Header() {
 
         {/* Desktop Nav */}
         <nav className="hidden md:block">
-          <ul className="flex items-center gap-8 uppercase tracking-wide text-sm font-bold">
+          <ul className="flex items-center gap-8 uppercase tracking-wide text-sm font-medium">
             <li><Link href="/" className="hover:text-red-500 transition text-white">Home</Link></li>
             <li><Link href="/classes" className="hover:text-red-500 transition text-white">Classes</Link></li>
             <li><Link href="/trainers" className="hover:text-red-500 transition text-white">Trainers</Link></li>

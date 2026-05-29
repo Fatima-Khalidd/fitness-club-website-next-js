@@ -91,10 +91,10 @@ export default function ClassesPage() {
           <div className="absolute inset-0 bg-black/70" />
         </div>
         <div className="relative">
-          <p className="text-red-500 uppercase tracking-widest font-bold mb-2 text-sm">
+          <p className="text-red-500 uppercase tracking-widest font-medium mb-2 text-sm">
             What We Offer
           </p>
-          <h1 className="text-4xl md:text-5xl font-black text-white uppercase mb-4">
+          <h1 className="text-4xl md:text-5xl font-normal text-white mb-4 tracking-tight">
             Our Classes
           </h1>
           <p className="text-gray-300 max-w-xl mx-auto">
@@ -117,13 +117,13 @@ export default function ClassesPage() {
           {classes.map((cls, index) => (
             <div
               key={cls._id}
-              className="bg-neutral-900 border border-white/10 rounded-xl p-6 hover:border-red-500/40 transition"
+              className="bg-neutral-900 border border-white/10 rounded-xl p-6 hover:border-red-500/40 transition flex flex-col items-center text-center"
             >
               <div className="text-4xl mb-4">
                 {CLASS_ICONS[index % CLASS_ICONS.length]}
               </div>
 
-              <h3 className="text-xl font-bold text-white mb-2">
+              <h3 className="text-xl font-normal text-white mb-2 tracking-tight">
                 {cls.name}
               </h3>
 
@@ -131,14 +131,12 @@ export default function ClassesPage() {
                 {cls.description}
               </p>
 
-              <div className="border-t border-white/10 pt-4 space-y-2">
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-500">Schedule</span>
-                  <span className="text-white">{cls.schedule}</span>
+              <div className="border-t border-white/10 pt-4 space-y-2 w-full text-center">
+                <div className="flex justify-center gap-4 text-sm flex-wrap">
+                  <span className="text-gray-500">Schedule: <span className="text-white">{cls.schedule}</span></span>
                 </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-500">Capacity</span>
-                  <span className="text-white">{cls.capacity} people</span>
+                <div className="flex justify-center gap-4 text-sm flex-wrap">
+                  <span className="text-gray-500">Capacity: <span className="text-white">{cls.capacity} people</span></span>
                 </div>
               </div>
 

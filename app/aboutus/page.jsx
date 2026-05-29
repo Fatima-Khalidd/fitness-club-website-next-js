@@ -32,10 +32,10 @@ export default function AboutPage() {
         {/* Mission */}
         <div className="grid md:grid-cols-2 gap-10 items-center">
           <div>
-            <p className="text-red-500 uppercase tracking-widest font-bold mb-2 text-sm">
+            <p className="text-red-500 uppercase tracking-widest font-medium mb-2 text-sm">
               Who We Are
             </p>
-            <h2 className="text-3xl font-black text-white uppercase mb-4">
+            <h2 className="text-3xl font-normal text-white mb-4 tracking-tight">
               Our Mission
             </h2>
             <p className="text-gray-400 leading-relaxed mb-4">
@@ -69,7 +69,7 @@ export default function AboutPage() {
               key={stat.label}
               className="bg-neutral-900 border border-white/10 rounded-xl p-6 text-center"
             >
-              <div className="text-3xl font-black text-red-500 mb-1">
+              <div className="text-3xl font-normal text-red-500 mb-1">
                 {stat.number}
               </div>
               <div className="text-gray-400 text-sm uppercase tracking-wide">
@@ -81,7 +81,7 @@ export default function AboutPage() {
 
         {/* Values */}
         <div>
-          <h2 className="text-3xl font-black text-white uppercase mb-8 text-center">
+          <h2 className="text-3xl font-normal text-white uppercase mb-8 text-center tracking-tight">
             Our Values
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
@@ -92,10 +92,10 @@ export default function AboutPage() {
             ].map(value => (
               <div
                 key={value.title}
-                className="bg-neutral-900 border border-white/10 rounded-xl p-6"
+                className="bg-neutral-900 border border-white/10 rounded-xl p-6 flex flex-col items-center text-center"
               >
                 <div className="text-4xl mb-3">{value.icon}</div>
-                <h3 className="text-lg font-bold text-white mb-2">{value.title}</h3>
+                <h3 className="text-lg font-normal text-white mb-2 tracking-tight">{value.title}</h3>
                 <p className="text-gray-400 text-sm leading-relaxed">{value.desc}</p>
               </div>
             ))}
@@ -104,7 +104,7 @@ export default function AboutPage() {
 
         {/* Location */}
         <div className="bg-neutral-900 border border-white/10 rounded-xl p-8">
-          <h2 className="text-2xl font-black text-white uppercase mb-6">
+          <h2 className="text-2xl font-normal text-white uppercase mb-6 tracking-tight">
             Find Us
           </h2>
           <div className="grid md:grid-cols-2 gap-6">

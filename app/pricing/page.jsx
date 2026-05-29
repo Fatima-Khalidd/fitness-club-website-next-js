@@ -62,10 +62,10 @@ export default function PricingPage() {
 
       {/* Hero */}
       <div className="text-center mb-16">
-        <p className="text-red-500 uppercase tracking-widest font-bold mb-2 text-sm">
+        <p className="text-red-500 uppercase tracking-widest font-medium mb-2 text-sm">
           Simple Pricing
         </p>
-        <h1 className="text-4xl md:text-5xl font-black text-white uppercase mb-4">
+        <h1 className="text-4xl md:text-5xl font-normal text-white mb-4 tracking-tight">
           Membership Plans
         </h1>
         <p className="text-gray-400 max-w-xl mx-auto">
@@ -89,13 +89,13 @@ export default function PricingPage() {
               </div>
             )}
 
-            <div className="mb-6">
-              <h3 className="text-xl font-bold text-white mb-4 uppercase">
+            <div className="mb-6 text-center">
+              <h3 className="text-xl font-normal text-white mb-4 uppercase tracking-tight">
                 {plan.name}
               </h3>
-              <div className="flex items-end gap-1">
+              <div className="flex items-end justify-center gap-1">
                 <span className="text-gray-400 text-sm">PKR</span>
-                <span className="text-4xl font-black text-white">
+                <span className="text-4xl font-normal text-white">
                   {plan.price}
                 </span>
                 <span className="text-gray-400 text-sm mb-1">/{plan.period}</span>
@@ -103,17 +103,17 @@ export default function PricingPage() {
             </div>
 
             {/* Features included */}
-            <ul className="space-y-3 mb-6 flex-1">
+            <ul className="space-y-3 mb-6 flex-1 text-left">
               {plan.features.map((feature, i) => (
-                <li key={i} className="flex items-start gap-2 text-sm text-gray-300">
-                  <span className="text-green-400 mt-0.5">✓</span>
-                  {feature}
+                <li key={i} className="flex items-center gap-2 text-sm text-gray-300">
+                  <span className="text-green-400 flex-shrink-0">✓</span>
+                  <span>{feature}</span>
                 </li>
               ))}
               {plan.notIncluded.map((feature, i) => (
-                <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
-                  <span className="mt-0.5">✕</span>
-                  {feature}
+                <li key={i} className="flex items-center gap-2 text-sm text-gray-600">
+                  <span className="flex-shrink-0">✕</span>
+                  <span>{feature}</span>
                 </li>
               ))}
             </ul>

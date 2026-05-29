@@ -75,10 +75,10 @@ export default function TrainersPage() {
           <div className="absolute inset-0 bg-black/70" />
         </div>
         <div className="relative">
-          <p className="text-red-500 uppercase tracking-widest font-bold mb-2 text-sm">
+          <p className="text-red-500 uppercase tracking-widest font-medium mb-2 text-sm">
             Meet The Team
           </p>
-          <h1 className="text-4xl md:text-5xl font-black text-white uppercase mb-4">
+          <h1 className="text-4xl md:text-5xl font-normal text-white mb-4 tracking-tight">
             Our Trainers
           </h1>
           <p className="text-gray-300 max-w-xl mx-auto">
@@ -110,13 +110,13 @@ export default function TrainersPage() {
                 <div className="text-6xl">👤</div>
               </div>
 
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-1">
+              <div className="p-6 flex flex-col items-center text-center w-full">
+                <h3 className="text-xl font-normal text-white mb-2 tracking-tight">
                   {trainer.name}
                 </h3>
 
                 {/* Specializations as badges */}
-                <div className="flex flex-wrap gap-2 mb-3">
+                <div className="flex flex-wrap gap-2 mb-3 justify-center">
                   {trainer.specialization.map((spec, i) => (
                     <span
                       key={i}

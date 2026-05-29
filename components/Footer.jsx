@@ -25,7 +25,7 @@ export default function Footer() {
 
         {/* Links */}
         <nav className="md:col-span-2">
-          <h3 className="text-white font-semibold uppercase text-sm mb-3 border-b-2 border-red-600 inline-block pb-1">
+          <h3 className="text-white font-medium uppercase text-sm mb-3 border-b-2 border-red-600 inline-block pb-1">
             Our Studio
           </h3>
           <ul className="space-y-3 text-sm"> {/* Increased space-y-2 to space-y-3 */}
@@ -38,7 +38,7 @@ export default function Footer() {
 
         {/* Contact */}
         <div className="md:col-span-3">
-          <h3 className="text-white font-semibold uppercase text-sm mb-3 border-b-2 border-red-600 inline-block pb-1">
+          <h3 className="text-white font-medium uppercase text-sm mb-3 border-b-2 border-red-600 inline-block pb-1">
             Get in Touch
           </h3>
           <div className="space-y-3 text-sm"> {/* Increased space-y-2 to space-y-3 */}

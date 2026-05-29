@@ -134,7 +134,7 @@ export default function BookingPage() {
             <div className="text-sm uppercase tracking-widest text-gray-400 mb-2">
               <span className="font-black text-red-500">Step 1</span> of 3
             </div>
-            <h2 className="text-xl font-bold mb-4">What's your main goal?</h2>
+            <h2 className="text-xl font-normal mb-4 tracking-tight">What's your main goal?</h2>
 
             <div className="grid sm:grid-cols-2 gap-3">
               {CONCERNS.map(concern => (
@@ -174,7 +174,7 @@ export default function BookingPage() {
             <div className="text-sm uppercase tracking-widest text-gray-400 mb-2">
               <span className="font-black text-red-500">Step 2</span> of 3
             </div>
-            <h2 className="text-xl font-bold mb-4">Pick Date &amp; Time</h2>
+            <h2 className="text-xl font-normal mb-4 tracking-tight">Pick Date &amp; Time</h2>
 
             <div className="grid sm:grid-cols-2 gap-4">
               {/* Date picker */}
@@ -218,7 +218,7 @@ export default function BookingPage() {
             <div className="text-sm uppercase tracking-widest text-gray-400 mb-2">
               <span className="font-black text-red-500">Step 3</span> of 3
             </div>
-            <h2 className="text-xl font-bold mb-4">Your Details</h2>
+            <h2 className="text-xl font-normal mb-4 tracking-tight">Your Details</h2>
 
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
