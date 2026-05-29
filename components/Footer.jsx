@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function Footer() {
   return (
-    <footer className="bg-neutral-950 border-t border-white/10 text-gray-300">
+    <footer className="bg-neutral-950 border-t border-white/10 text-gray-300 pt-12 pb-12">
       {/* Increased from py-14 to py-20 for more top/bottom spacing */}
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20 grid gap-12 md:grid-cols-12">
         
@@ -49,10 +49,14 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Increased bottom padding from py-6 to py-8 */}
-      <div className="border-t border-white/10 text-center text-sm text-gray-400 py-8">
-        © 2025 <span className="text-white font-semibold">Hamza Fitness Club</span>. 
-        All rights reserved.
+      {/* Increased bottom padding from py-6 to py-10 and added line spacing */}
+      <div className="border-t border-white/10 text-center text-sm text-gray-400 py-10">
+        <div className="max-w-7xl mx-auto space-y-1">
+          <p>
+            © 2025 <span className="text-white font-medium">Hamza Fitness Club</span>.
+          </p>
+          <p>All rights reserved.</p>
+        </div>
       </div>
     </footer>
   )
