@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Footer from '@/components/Footer' 
 
 // Fallback hardcoded trainers shown while DB is empty
 // Replace these with real entries via POST /api/trainers
