@@ -16,14 +16,14 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-black/60" />
         </div>
 
-        <div className="relative text-center px-4 flex flex-col items-center">
+        <div className="relative text-center px-4 flex flex-col items-center max-w-xl">
           <p className="text-red-500 uppercase tracking-widest font-medium mb-4">
             Welcome to
           </p>
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 uppercase">
+          <h1 className="text-5xl md:text-7xl font-normal text-white mb-6 tracking-tight">
             Hamza Fitness Club
           </h1>
-          <p className="text-gray-300 text-lg md:text-xl mb-8 max-w-2xl text-center">
+          <p className="text-gray-300 text-lg md:text-xl mb-8 max-w-2xl text-center leading-relaxed">
             Your destination for strength, dedication, and transformation.
           </p>
           <Link
