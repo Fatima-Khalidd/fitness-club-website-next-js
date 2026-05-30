@@ -2,61 +2,55 @@ import Link from 'next/link'
 
 export default function Footer() {
   return (
-    <footer style={{ backgroundColor: '#0a0a0a', borderTop: '1px solid rgba(255,255,255,0.1)', color: '#d1d5db' }}>
-      
-      {/* Main footer content */}
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '48px 32px' }}>
-        <div style={{ display: 'grid', gap: '32px', gridTemplateColumns: 'repeat(12, 1fr)' }}>
+    <footer className="bg-neutral-950 border-t border-white/10 text-gray-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+        <div className="grid gap-8 sm:gap-10 md:gap-12 lg:gap-14 md:grid-cols-12">
           
-          {/* Brand Section */}
-          <div style={{ gridColumn: 'span 5', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <img src="/images/hfc-logo.jpg" alt="Logo" style={{ width: '40px', height: '40px', objectFit: 'contain', borderRadius: '6px' }} />
-              <h2 style={{ fontSize: '24px', fontWeight: 'bold', color: 'white', letterSpacing: '1px', textTransform: 'uppercase' }}>
+          <div className="md:col-span-5 space-y-4 sm:space-y-5">
+            <div className="flex items-center gap-3">
+              <img src="/images/hfc-logo.jpg" alt="Logo" className="w-10 h-10 object-contain rounded-md" />
+              <h2 className="text-xl sm:text-2xl font-extrabold text-white tracking-wider uppercase">
                 Hamza Fitness Club
               </h2>
             </div>
-            <p style={{ color: '#9ca3af', lineHeight: '1.6' }}>
+            <p className="text-gray-400 leading-relaxed text-sm sm:text-base">
               Your destination for strength, dedication, and transformation.
             </p>
-            <button style={{ marginTop: '8px', backgroundColor: '#dc2626', color: 'white', padding: '10px 24px', borderRadius: '6px', border: 'none', cursor: 'pointer' }}>
+            <button className="mt-2 sm:mt-3 bg-red-600 hover:bg-red-700 text-white px-5 sm:px-6 py-2 sm:py-2.5 rounded-md transition duration-200 text-sm sm:text-base font-medium">
               BOOK FREE APPOINTMENT
             </button>
           </div>
 
-          {/* Our Studio Links */}
-          <div style={{ gridColumn: 'span 2' }}>
-            <h3 style={{ color: 'white', fontWeight: '500', fontSize: '14px', borderBottom: '2px solid #dc2626', display: 'inline-block', paddingBottom: '4px', marginBottom: '16px' }}>
+          <nav className="md:col-span-2 space-y-3 sm:space-y-4">
+            <h3 className="text-white font-medium uppercase text-xs sm:text-sm border-b-2 border-red-600 inline-block pb-1">
               Our Studio
             </h3>
-            <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '14px', listStyle: 'none', padding: 0 }}>
-              <li><Link href="/aboutus" style={{ color: '#9ca3af', textDecoration: 'none' }}>About Us</Link></li>
-              <li><Link href="/trainers" style={{ color: '#9ca3af', textDecoration: 'none' }}>Trainers</Link></li>
-              <li><Link href="/classes" style={{ color: '#9ca3af', textDecoration: 'none' }}>Classes</Link></li>
-              <li><Link href="/pricing" style={{ color: '#9ca3af', textDecoration: 'none' }}>Pricing</Link></li>
+            <ul className="space-y-2 sm:space-y-3 text-sm">
+              <li><Link href="/aboutus" className="hover:text-red-500 transition">About Us</Link></li>
+              <li><Link href="/trainers" className="hover:text-red-500 transition">Trainers</Link></li>
+              <li><Link href="/classes" className="hover:text-red-500 transition">Classes</Link></li>
+              <li><Link href="/pricing" className="hover:text-red-500 transition">Pricing</Link></li>
             </ul>
-          </div>
+          </nav>
 
-          {/* Get in Touch */}
-          <div style={{ gridColumn: 'span 3' }}>
-            <h3 style={{ color: 'white', fontWeight: '500', fontSize: '14px', borderBottom: '2px solid #dc2626', display: 'inline-block', paddingBottom: '4px', marginBottom: '16px' }}>
+          <div className="md:col-span-3 space-y-3 sm:space-y-4">
+            <h3 className="text-white font-medium uppercase text-xs sm:text-sm border-b-2 border-red-600 inline-block pb-1">
               Get in Touch
             </h3>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '14px' }}>
-              <p style={{ color: '#9ca3af', margin: 0 }}>+92 305 7050399</p>
-              <p style={{ color: '#9ca3af', margin: 0 }}>support@hamzafitnessclub.com</p>
-              <p style={{ color: '#9ca3af', margin: 0 }}>Green Town, Faisalabad, Pakistan</p>
+            <div className="space-y-2 sm:space-y-3 text-sm">
+              <p className="text-gray-400">+92 305 7050399</p>
+              <p className="text-gray-400">support@hamzafitnessclub.com</p>
+              <p className="text-gray-400">Green Town, Faisalabad, Pakistan</p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom Bar */}
-      <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '32px 32px', textAlign: 'center' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '12px', color: '#9ca3af' }}>
-            <p style={{ margin: 0 }}>© 2025 <span style={{ color: 'white', fontWeight: '500' }}>Hamza Fitness Club</span></p>
-            <p style={{ margin: 0 }}>All rights reserved.</p>
+      <div className="border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10">
+          <div className="text-center text-xs sm:text-sm text-gray-400 space-y-1">
+            <p>© 2025 <span className="text-white font-medium">Hamza Fitness Club</span></p>
+            <p>All rights reserved.</p>
           </div>
         </div>
       </div>
