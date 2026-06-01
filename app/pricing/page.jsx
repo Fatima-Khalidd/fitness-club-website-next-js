@@ -135,7 +135,10 @@ export default function PricingPage() {
 
       {/* Free consultation note */}
       <div className="max-w-2xl mx-auto text-center bg-neutral-900 border border-white/10 rounded-xl p-8">
-        <div className="text-4xl mb-4">🎯</div>
+        <div className="text-4xl mb-4">
+          <span className="icon-anim goal" aria-hidden="true"></span>
+          <span className="sr-only">Target</span>
+        </div>
         <h3 className="text-xl font-bold text-white mb-2">
           Not sure which plan?
         </h3>

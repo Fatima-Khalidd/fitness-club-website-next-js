@@ -49,7 +49,14 @@ const FALLBACK_CLASSES = [
   },
 ]
 
-const CLASS_ICONS = ['🏃', '🏋️', '🧘', '⚡', '🥊', '🥗']
+const CLASS_ICONS = [
+  <span className="icon-anim goal" aria-hidden="true"></span>,
+  <span className="icon-anim strength" aria-hidden="true"></span>,
+  <span className="icon-anim mobility" aria-hidden="true"></span>,
+  <span className="icon-anim bolt" aria-hidden="true"></span>,
+  <span className="icon-anim" aria-hidden="true"></span>,
+  <span className="icon-anim clipboard" aria-hidden="true"></span>,
+]
 
 export default function ClassesPage() {
   const [classes, setClasses] = useState([])
@@ -110,7 +117,10 @@ export default function ClassesPage() {
 
       {loading ? (
         <div className="text-center text-gray-400 py-20">
-          <div className="text-4xl mb-4">⏳</div>
+            <div className="text-4xl mb-4">
+              <span className="icon-anim clock" aria-hidden="true"></span>
+              <span className="sr-only">Loading</span>
+            </div>
           <p>Loading classes...</p>
         </div>
       ) : (

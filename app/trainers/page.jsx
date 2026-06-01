@@ -96,7 +96,10 @@ export default function TrainersPage() {
       {/* Loading state */}
       {loading ? (
         <div className="text-center text-gray-400 py-20">
-          <div className="text-4xl mb-4">⏳</div>
+          <div className="text-4xl mb-4">
+            <span className="icon-anim clock" aria-hidden="true"></span>
+            <span className="sr-only">Loading</span>
+          </div>
           <p>Loading trainers...</p>
         </div>
       ) : (
@@ -108,7 +111,10 @@ export default function TrainersPage() {
             >
               {/* Trainer image placeholder */}
               <div className="h-48 bg-neutral-800 flex items-center justify-center">
-                <div className="text-6xl">👤</div>
+                <div className="text-6xl">
+                  <span className="icon-anim avatar" aria-hidden="true"></span>
+                  <span className="sr-only">Trainer</span>
+                </div>
               </div>
 
               <div className="p-6 flex flex-col items-center text-center w-full">

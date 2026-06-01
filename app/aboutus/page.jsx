@@ -49,8 +49,11 @@ export default function AboutPage() {
               community that keeps you motivated every step of the way.
             </p>
           </div>
-          <div className="bg-neutral-900 border border-white/10 rounded-xl p-8 text-center">
-            <div className="text-6xl mb-4">🏋️</div>
+            <div className="bg-neutral-900 border border-white/10 rounded-xl p-8 text-center">
+            <div className="text-6xl mb-4">
+              <span className="icon-anim hero" aria-hidden="true"></span>
+              <span className="sr-only">Weightlifting</span>
+            </div>
             <p className="text-gray-400 text-sm italic">
               "Your only competition is who you were yesterday."
             </p>
@@ -86,15 +89,15 @@ export default function AboutPage() {
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { icon: '💪', title: 'Dedication', desc: 'We push you to your limits while ensuring safe, progressive training.' },
-              { icon: '🤝', title: 'Community', desc: 'A supportive environment where everyone motivates each other.' },
-              { icon: '📈', title: 'Results', desc: 'Every program is designed with measurable outcomes in mind.' },
+              { icon: <span className="icon-anim strength" aria-hidden="true"></span>, title: 'Dedication', desc: 'We push you to your limits while ensuring safe, progressive training.' },
+              { icon: <span className="icon-anim community" aria-hidden="true"></span>, title: 'Community', desc: 'A supportive environment where everyone motivates each other.' },
+              { icon: <span className="icon-anim results" aria-hidden="true"></span>, title: 'Results', desc: 'Every program is designed with measurable outcomes in mind.' },
             ].map(value => (
               <div
                 key={value.title}
                 className="bg-neutral-900 border border-white/10 rounded-xl p-6 flex flex-col items-center text-center"
               >
-                <div className="text-4xl mb-3">{value.icon}</div>
+                <div className="text-4xl mb-3">{value.icon}<span className="sr-only">{value.title}</span></div>
                 <h3 className="text-lg font-normal text-white mb-2 tracking-tight">{value.title}</h3>
                 <p className="text-gray-400 text-sm leading-relaxed">{value.desc}</p>
               </div>

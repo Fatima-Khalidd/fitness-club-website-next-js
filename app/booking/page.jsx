@@ -6,13 +6,13 @@ import Link from 'next/link'
 
 // These are the goal options from your original booking.html
 const CONCERNS = [
-  { value: 'Weight Loss / Fat Loss', icon: '🔥' },
-  { value: 'Muscle Gain & Strength', icon: '💪' },
-  { value: 'Mobility & Pain Relief', icon: '🧘' },
-  { value: 'Sports Performance', icon: '⚡' },
-  { value: 'General Fitness & Cardio', icon: '❤️' },
-  { value: 'Nutrition & Habit Coaching', icon: '📋' },
-  { value: 'Virtual Coaching', icon: '💻' },
+  { value: 'Weight Loss / Fat Loss', icon: <span className="icon-anim flame" aria-hidden="true"></span> },
+  { value: 'Muscle Gain & Strength', icon: <span className="icon-anim strength" aria-hidden="true"></span> },
+  { value: 'Mobility & Pain Relief', icon: <span className="icon-anim mobility" aria-hidden="true"></span> },
+  { value: 'Sports Performance', icon: <span className="icon-anim bolt" aria-hidden="true"></span> },
+  { value: 'General Fitness & Cardio', icon: <span className="icon-anim heart" aria-hidden="true"></span> },
+  { value: 'Nutrition & Habit Coaching', icon: <span className="icon-anim clipboard" aria-hidden="true"></span> },
+  { value: 'Virtual Coaching', icon: <span className="icon-anim laptop" aria-hidden="true"></span> },
 ]
 
 // Time slots from 6:00pm to 9:00pm, every 30 minutes
@@ -105,7 +105,10 @@ export default function BookingPage() {
     return (
       <div className="min-h-screen flex items-center justify-center px-4">
         <div className="bg-neutral-900 border border-white/10 rounded-xl p-10 text-center max-w-md w-full">
-          <div className="text-6xl mb-4">✅</div>
+            <div className="text-6xl mb-4">
+              <span className="icon-anim check" aria-hidden="true"></span>
+              <span className="sr-only">Success</span>
+            </div>
           <h2 className="text-2xl font-bold text-white mb-2">Appointment Booked!</h2>
           <p className="text-gray-400 mb-6">
             We've received your booking for <strong className="text-white">{date}</strong> at <strong className="text-white">{time}</strong>.

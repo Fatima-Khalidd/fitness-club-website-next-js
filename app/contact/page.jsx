@@ -45,13 +45,13 @@ export default function ContactPage() {
             { icon: '📍', label: 'Address', value: 'Chowk, Khatam-e-Nabuwat Plaza, Millat Rd, Green Town, Faisalabad' },
             { icon: '📞', label: 'Phone', value: '+92 305 7050399' },
             { icon: '✉️', label: 'Email', value: 'support@hamzafitnessclub.com' },
-            { icon: '🕐', label: 'Hours', value: 'Mon–Thu, Sat–Sun: 6:15–9:15 AM & 4:15–10:45 PM\nFriday: Closed' },
+            { icon: <span className="icon-anim clock" aria-hidden="true"></span>, label: 'Hours', value: 'Mon–Thu, Sat–Sun: 6:15–9:15 AM & 4:15–10:45 PM\nFriday: Closed' },
           ].map(item => (
             <div
               key={item.label}
               className="flex gap-4 bg-neutral-900 border border-white/10 rounded-xl p-5"
             >
-              <span className="text-2xl">{item.icon}</span>
+              <span className="text-2xl">{item.icon}<span className="sr-only">{item.label}</span></span>
               <div>
                 <p className="text-gray-500 text-xs uppercase tracking-wide mb-1">
                   {item.label}
@@ -68,7 +68,10 @@ export default function ContactPage() {
         <div className="bg-neutral-900 border border-white/10 rounded-xl p-8">
           {sent ? (
             <div className="text-center py-8">
-              <div className="text-5xl mb-4">✅</div>
+              <div className="text-5xl mb-4">
+                <span className="icon-anim check" aria-hidden="true"></span>
+                <span className="sr-only">Message sent</span>
+              </div>
               <h3 className="text-xl font-bold text-white mb-2">Message Sent!</h3>
               <p className="text-gray-400 text-sm">
                 Thanks {name}! We'll get back to you within 24 hours.

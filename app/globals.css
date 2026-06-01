@@ -24,3 +24,42 @@ h5,
 h6 {
   font-weight: 400;
 }
+
+/* Animated icon replacements for emojis */
+.icon-anim {
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: 0.35em;
+  background: linear-gradient(135deg,#f97316,#ef4444);
+  box-shadow: 0 6px 18px rgba(239,68,68,0.12);
+  vertical-align: -0.12em;
+  animation: float 2.6s ease-in-out infinite;
+}
+.icon-anim.hero { width: 3.5rem; height: 3.5rem; border-radius: 0.6rem; }
+.icon-anim.strength { background: linear-gradient(135deg,#fb923c,#fb7185); }
+.icon-anim.community { background: linear-gradient(135deg,#60a5fa,#7c3aed); }
+.icon-anim.results { background: linear-gradient(135deg,#34d399,#10b981); }
+.icon-anim.flame { background: linear-gradient(135deg,#ff7a18,#ff3d00); }
+.icon-anim.mobility { background: linear-gradient(135deg,#7dd3fc,#60a5fa); }
+.icon-anim.bolt { background: linear-gradient(135deg,#facc15,#f97316); }
+.icon-anim.heart { background: linear-gradient(135deg,#fb7185,#f43f5e); }
+.icon-anim.clipboard { background: linear-gradient(135deg,#60a5fa,#06b6d4); }
+.icon-anim.laptop { background: linear-gradient(135deg,#a78bfa,#6366f1); }
+.icon-anim.goal { background: linear-gradient(135deg,#f472b6,#fb7185); width:2.2rem; height:2.2rem; }
+.icon-anim.check { background: linear-gradient(135deg,#34d399,#10b981); width:2.6rem; height:2.6rem; }
+.icon-anim.clock { background: linear-gradient(135deg,#f59e0b,#f97316); }
+.icon-anim.avatar { background: linear-gradient(135deg,#94a3b8,#64748b); width:3.6rem; height:3.6rem; border-radius:9999px; }
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-6px) rotate(2deg); }
+  100% { transform: translateY(0) rotate(-2deg); }
+}
+
+/* Small screen-reader utility if tailwind's not available */
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
